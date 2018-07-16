@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Kendo UI Dropdown list examples</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.rtl.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.silver.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.mobile.all.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Kendo UI Dropdown list MVC examples</h1>
+    <div class="row">
+        <div class="form-group">
+            <label for="dropdownlistexample">Simple Kendo UI Dropdown List</label>
+            <input id="dropdownlistexample" class="form-control" style="width: 100%"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="htmldropdownlist"> Kendo UI Dropdown List widget</label>
+            <select id="htmldropdownlist" class="form-control">
+                <option>Dropdown item 1</option>
+                <option>Dropdown item 2</option>
+                <option>Dropdown item3</option>
+            </select>
+            <script>
+                $(document).ready(function () {
+                    $("#htmldropdownlist").kendoDropDownList();
+                });
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="dropdownlistexampleone">Kendo UI Dropdown List with text and value
+                example</label>
+            <input id="dropdownlistexampleone" class="form-control" style="width: 100%"/>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="form-group">
+            <label for="dropdownlistfilterexample">Kendo UI Dropdown List Search items
+                example</label>
+            <input id="dropdownlistfilterexample" class="form-control" style="width: 100%" />
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var data = [
+            {text: "India", value: "1"},
+            {text: "USA", value: "2"},
+            {text: "Canada", value: "3"}
+        ];
+        $("#dropdownlistexample").kendoDropDownList({
+                                                        dataSource: {
+                                                            data: ["India", "USA"]
+                                                        },
+                                                    });
+        $("#dropdownlistexampleone").kendoDropDownList({
+                                                           dataTextField: "text",
+                                                           dataValueField: "value",
+                                                           dataSource: {
+                                                               data: data
+                                                           },
+
+                                                       });
+        $("#dropdownlistfilterexample").kendoDropDownList({
+                                                           dataTextField: "text",
+                                                           dataValueField: "value",
+                                                           dataSource: {
+                                                               data: data
+                                                           },
+                                                           filter: "contains",
+                                                       });
+    });
+</script>
+</body>
+</html>
