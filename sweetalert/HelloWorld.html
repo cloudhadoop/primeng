@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>SweetAlert JQuery Demo</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.9/sweetalert2.all.min.js"></script>
+
+ </head>
+ <style>
+ .new-height {
+  height: 100vh;
+}
+ </style>
+ <body>
+<div class="example">
+  <button id="button1">Simple Message popup</button>
+  </br>
+  <button id="button2">Message popup with title under it</button>
+    </br>
+  <button id="button3"> Successful popu message</button>
+    </br>
+  <button id="button4">A warning popu message </button>
+    </br>
+  <button id="button5">passing parameters.</button>
+    </br>
+  <button id="button6">Message with icon customzied</button>
+    </br>
+	  <button id="button7">Change popup size</button>
+    </br>
+	  <button id="button8">Two input fields examples</button>
+    </br>
+</div>
+ </body>
+
+
+ <script>
+
+$(document).ready(function(){
+
+$("#button1").click(function(){
+	swal("Simple Message");
+
+});
+$("#button2").click(function(){
+	swal("Simplemessage!", "Title inserted hehre")
+
+});
+$("#button3").click(function(){
+	swal("Sucess message", "Text here", "success");
+
+});
+$("#button4").click(function(){
+swal({
+		title: "Are you sure want to delete it?",
+		text: "Delete record,",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#DD6B55',
+		confirmButtonText: 'Yes, deleted!',
+		closeOnConfirm: false,
+		//closeOnCancel: false
+	},
+	function(){
+		swal("Deleted!", "Your record has been deleted!", "success");
+	});
+});
+$("#button5").click(function(){
+	swal({
+		title: "Are you sure?",
+		text: "Delete record,",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#DD6B55',
+		confirmButtonText: 'Yes, deleted!',
+		cancelButtonText: "No, cancel it!",
+		closeOnConfirm: false,
+		closeOnCancel: false
+	},
+	function(isConfirm){
+    if (isConfirm){
+      swal("Deleted!", "Record has been deleted!", "success");
+    } else {
+      swal("Cancelled", "Record deletion is cancelled :)", "error");
+    }
+	});
+});
+$("#button6").click(function(){
+	swal({
+		title: "Custom Icon!",
+		text: "Custom Icon demo.",
+		imageUrl: 'https://i.imgur.com/4NZ6uLY.jpg'
+	});
+});
+$("#button7").click(function(){
+
+  swal({
+     title: 'Test',
+     customClass: 'new-height'
+  });
+
+
+});
+$("#button8").click(function(){
+swal({
+  title: 'two inputs',
+  html:
+    '<input id="input1" class="input1">' +
+    '<input id="input2" class="input2">',
+  preConfirm: function () {
+    return new Promise(function (resolve) {
+      resolve([
+        $('#input1').val(),
+        $('#input2').val()
+      ])
+    })
+  },
+  onOpen: function () {
+    $('#input1').focus()
+  }
+}).then(function (result) {
+  swal(JSON.stringify(result))
+}).catch(swal.noop)
+});
+
+});
+
+ </script>
+</html>
